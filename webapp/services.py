@@ -28,7 +28,6 @@ class Stats:
 
 def search_notes(query: str, limit: int = 25) -> list[SearchHit]:
     """Поиск под продакшен: точный scoring, приоритет тегов перед телом.
-
     На небольшой выдаче (limit=25) важна релевантность: точное совпадение по
     тегу — 1.0, начало title — 0.95, подстрока в title — 0.7, тело — 0.4 с
     бонусом за частоту, но не выше 0.6.
@@ -37,7 +36,7 @@ def search_notes(query: str, limit: int = 25) -> list[SearchHit]:
     if not query_norm:
         return []
 
-    notes = models.list_notes(limit=500)
+    notes = models.list_notes(limit=2000)
     hits: list[SearchHit] = []
     for note in notes:
         title_l = note.title.lower()
